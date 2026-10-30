@@ -79,33 +79,33 @@ const FULL = "skills+shared+voice+escalations+x+team";
 
 /** Bytes when the budget was last set; a profile may move at most 2% either way (lower it to lock in a win). */
 const BUDGET_BASELINE: Record<string, number> = {
-  "default": 55532,
-  "voice": 56313,
-  "shared": 57632,
-  "shared+voice": 58413,
-  "skills": 58351,
-  "skills+voice": 59132,
-  "skills+shared": 60451,
-  "skills+shared+voice": 61232,
-  "non-chief": 46628,
-  "voice+non-chief": 47394,
-  "shared+non-chief": 48686,
-  "shared+voice+non-chief": 49452,
-  "skills+non-chief": 49391,
-  "skills+voice+non-chief": 50156,
-  "skills+shared+non-chief": 51449,
-  "skills+shared+voice+non-chief": 52214,
-  "skills+shared+voice+cloud-home": 60313,
-  "skills+shared+voice+non-chief+cloud-home": 51314,
-  "default+legacy-switches": 55532,
-  "default+mausbot": 56183,
-  "skills+shared+voice+mausbot": 61883,
-  "skills+shared+voice+escalations": 62062,
-  "skills+shared+voice+escalations+x": 65901,
-  "skills+shared+voice+escalations+x+team": 66533,
-  "default+no-computer-pick": 54320,
-  "default+room": 48473,
-  "non-chief+room": 39416,
+  "default": 55704,
+  "voice": 56485,
+  "shared": 57804,
+  "shared+voice": 58585,
+  "skills": 58523,
+  "skills+voice": 59304,
+  "skills+shared": 60623,
+  "skills+shared+voice": 61404,
+  "non-chief": 46800,
+  "voice+non-chief": 47566,
+  "shared+non-chief": 48858,
+  "shared+voice+non-chief": 49624,
+  "skills+non-chief": 49563,
+  "skills+voice+non-chief": 50328,
+  "skills+shared+non-chief": 51621,
+  "skills+shared+voice+non-chief": 52386,
+  "skills+shared+voice+cloud-home": 60485,
+  "skills+shared+voice+non-chief+cloud-home": 51486,
+  "default+legacy-switches": 55704,
+  "default+mausbot": 56355,
+  "skills+shared+voice+mausbot": 62055,
+  "skills+shared+voice+escalations": 62234,
+  "skills+shared+voice+escalations+x": 66073,
+  "skills+shared+voice+escalations+x+team": 66705,
+  "default+no-computer-pick": 54492,
+  "default+room": 48645,
+  "non-chief+room": 39588,
 };
 
 const RPC_PREFIX = '{"jsonrpc":"2.0","id":1,"result":';
@@ -222,7 +222,7 @@ describe("agents proxy tools/list golden", () => {
       for (const alias of ["delegate_bot", "ask_bot", "send_to_bot", "check_delegation", "wait_delegation"]) expect(tools.has(alias), `${name}: ${alias}`).toBe(false);
       expect(JSON.stringify([...tools.values()])).not.toMatch(/Deprecated alias|works for this release/);
       const coordinate = tools.get("coordinate_bots")!.inputSchema.properties;
-      expect(Object.keys(coordinate)).toEqual(["group_id", "bot_ids", "message", "reason", "rework", "thread", "title", "in_my_folder", "reply", "consult", "done_when"]);
+      expect(Object.keys(coordinate)).toEqual(["group_id", "bot_ids", "message", "reason", "rework", "thread", "title", "in_my_folder", "reply", "consult", "done_when", "answers"]);
       expect(coordinate.thread!.enum).toEqual(["standing", "new"]);
       expect(coordinate.reply!.enum).toEqual(["resume", "none"]);
       expect(Object.keys(tools.get("assignment_status")!.inputSchema.properties)).toEqual(["id", "wait_ms"]);
